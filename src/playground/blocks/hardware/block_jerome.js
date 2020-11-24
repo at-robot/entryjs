@@ -77,11 +77,12 @@ Entry.jerome.setLanguage = function() {
                 elbow: '팔꿈치',
                 wrist: '손목',
                 hip: '골반',
-                h_thigh: '수평 허벅지',
-                v_thigh: '수직 허벅지',
+                u_thigh: '위 허벅지',
+                l_thigh: '아래 허벅지',
                 knee: '무릎',
-                h_ankle: '수평 손목',
-                v_ankle: '수직 손목',
+                u_ankle: '위 발목',
+                l_ankle: '아래 발목',
+                head: '머리',
                 red: '빨간',
                 green: '초록',
                 blue: '파란',
@@ -93,10 +94,11 @@ Entry.jerome.setLanguage = function() {
             template: {
                 jerome_toggle_led: '%1 색 LED %2 %3',
                 jerome_set_tone: '디지털 %1 번 핀의 버저를 %2 %3 음으로 %4 초 연주하기 %5',
-                jerome_left_arm_servo: '왼팔 %1 번 서보모터를 %2 의 각도로 정하기 %3',
-                jerome_right_arm_servo: '오른팔 %1 번 서보모터를 %2 의 각도로 정하기 %3',
-                jerome_left_leg_servo: '왼다리 %1 번 서보모터를 %2 의 각도로 정하기 %3',
-                jerome_right_leg_servo: '오른다리 %1 번 서보모터를 %2 의 각도로 정하기 %3',
+                jerome_left_arm_servo: '왼팔 %1 서보모터를 %2 의 각도로 정하기 %3',
+                jerome_right_arm_servo: '오른팔 %1 서보모터를 %2 의 각도로 정하기 %3',
+                jerome_left_leg_servo: '왼다리 %1 서보모터를 %2 의 각도로 정하기 %3',
+                jerome_right_leg_servo: '오른다리 %1 서보모터를 %2 의 각도로 정하기 %3',
+                jerome_head_servo: '%1 서보모터를 %2의 각도로 정하기 %3',
             },
         },
         en: {
@@ -105,11 +107,12 @@ Entry.jerome.setLanguage = function() {
                 elbow: 'elbow',
                 wrist: 'wrist',
                 hip: 'hip',
-                h_thigh: 'h_thigh',
-                v_thigh: 'v_thigh',
+                u_thigh: 'upper_thigh',
+                l_thigh: 'lower_thigh',
                 knee: 'knee',
-                h_ankle: 'h_ankle',
-                v_ankle: 'v_ankle',
+                u_ankle: 'upper_ankle',
+                l_ankle: 'lower_ankle',
+                head: 'head',
                 red: 'red',
                 green: 'green',
                 blue: 'blue',
@@ -125,6 +128,7 @@ Entry.jerome.setLanguage = function() {
                 jerome_right_arm_servo: 'Set right arm %1 servo angle as %2 %3',
                 jerome_left_leg_servo: 'Set left leg %1 servo angle as %2 %3',
                 jerome_right_leg_servo: 'Set right leg %1 servo angle as %2 %3',
+                jerome_head_servo: 'Set %1 servo angle as %2 %3',
             },
         },
     };
@@ -137,6 +141,7 @@ Entry.jerome.blockMenuBlocks = [
     'jerome_right_arm_servo',
     'jerome_left_leg_servo',
     'jerome_right_leg_servo',
+    'jerome_head_servo',
 ];
 
 Entry.jerome.getBlocks = function() {
@@ -261,9 +266,9 @@ Entry.jerome.getBlocks = function() {
                 {
                     type: 'Dropdown',
                     options: [
-                        ['1', '1'],
-                        ['2', '2'],
-                        ['3', '3'],
+                        [Lang.Blocks.shoulder, '1'],
+                        [Lang.Blocks.elbow, '2'],
+                        [Lang.Blocks.wrist, '3'],
                     ],
                     value: '1',
                     fontSize: 11,
@@ -291,9 +296,9 @@ Entry.jerome.getBlocks = function() {
                             {
                                 type: 'Dropdown',
                                 options: [
-                                    ['1', '1'],
-                                    ['2', '2'],
-                                    ['3', '3'],
+                                    [Lang.Blocks.shoulder, '1'],
+                                    [Lang.Blocks.elbow, '2'],
+                                    [Lang.Blocks.wrist, '3'],
                                 ],
                                 value: '1',
                                 fontSize: 11,
@@ -318,9 +323,9 @@ Entry.jerome.getBlocks = function() {
                 {
                     type: 'Dropdown',
                     options: [
-                        ['1', '4'],
-                        ['2', '5'],
-                        ['3', '6'],
+                        [Lang.Blocks.shoulder, '4'],
+                        [Lang.Blocks.elbow, '5'],
+                        [Lang.Blocks.wrist, '6'],
                     ],
                     value: '4',
                     fontSize: 11,
@@ -348,9 +353,9 @@ Entry.jerome.getBlocks = function() {
                             {
                                 type: 'Dropdown',
                                 options: [
-                                    ['1', '4'],
-                                    ['2', '5'],
-                                    ['3', '6'],
+                                    [Lang.Blocks.shoulder, '4'],
+                                    [Lang.Blocks.elbow, '5'],
+                                    [Lang.Blocks.wrist, '6'],
                                 ],
                                 value: '4',
                                 fontSize: 11,
@@ -375,12 +380,12 @@ Entry.jerome.getBlocks = function() {
                 {
                     type: 'Dropdown',
                     options: [
-                        ['1', '7'],
-                        ['2', '8'],
-                        ['3', '9'],
-                        ['4', '10'],
-                        ['5', '11'],
-                        ['6', '12'],
+                        [Lang.Blocks.hip, '7'],
+                        [Lang.Blocks.u_thigh, '8'],
+                        [Lang.Blocks.l_thigh, '9'],
+                        [Lang.Blocks.knee, '10'],
+                        [Lang.Blocks.u_ankle, '11'],
+                        [Lang.Blocks.l_ankle, '12'],
                     ],
                     value: '7',
                     fontSize: 11,
@@ -408,12 +413,12 @@ Entry.jerome.getBlocks = function() {
                             {
                                 type: 'Dropdown',
                                 options: [
-                                    ['1', '7'],
-                                    ['2', '8'],
-                                    ['3', '9'],
-                                    ['4', '10'],
-                                    ['5', '11'],
-                                    ['6', '12'],
+                                    [Lang.Blocks.hip, '7'],
+                                    [Lang.Blocks.u_thigh, '8'],
+                                    [Lang.Blocks.l_thigh, '9'],
+                                    [Lang.Blocks.knee, '10'],
+                                    [Lang.Blocks.u_ankle, '11'],
+                                    [Lang.Blocks.l_ankle, '12'],
                                 ],
                                 value: '7',
                                 fontSize: 11,
@@ -438,12 +443,12 @@ Entry.jerome.getBlocks = function() {
                 {
                     type: 'Dropdown',
                     options: [
-                        ['1', '13'],
-                        ['2', '14'],
-                        ['3', '15'],
-                        ['4', '16'],
-                        ['5', '17'],
-                        ['6', '18'],
+                        [Lang.Blocks.hip, '13'],
+                        [Lang.Blocks.u_thigh, '14'],
+                        [Lang.Blocks.l_thigh, '15'],
+                        [Lang.Blocks.knee, '16'],
+                        [Lang.Blocks.u_ankle, '17'],
+                        [Lang.Blocks.l_ankle, '18'],
                     ],
                     value: '13',
                     fontSize: 11,
@@ -471,12 +476,12 @@ Entry.jerome.getBlocks = function() {
                             {
                                 type: 'Dropdown',
                                 options: [
-                                    ['1', '13'],
-                                    ['2', '14'],
-                                    ['3', '15'],
-                                    ['4', '16'],
-                                    ['5', '17'],
-                                    ['6', '18'],
+                                    [Lang.Blocks.hip, '13'],
+                                    [Lang.Blocks.u_thigh, '14'],
+                                    [Lang.Blocks.l_thigh, '15'],
+                                    [Lang.Blocks.knee, '16'],
+                                    [Lang.Blocks.u_ankle, '17'],
+                                    [Lang.Blocks.l_ankle, '18'],
                                 ],
                                 value: '13',
                                 fontSize: 11,
@@ -543,6 +548,59 @@ Entry.jerome.getBlocks = function() {
                             },
                         ],
                         keyOption: 'jerome_color_list',
+                    },
+                ],
+            },
+        },
+
+        jerome_head_list: {
+            color: EntryStatic.colorSet.block.default.HARDWARE,
+            outerLine: EntryStatic.colorSet.block.darken.HARDWARE,
+            skeleton: 'basic_string_field',
+            statements: [],
+            template: '%1',
+            params: [
+                {
+                    type: 'Dropdown',
+                    options: [
+                        [Lang.Blocks.head, '19'],
+                    ],
+                    value: '19',
+                    fontSize: 11,
+                    bgColor: EntryStatic.colorSet.block.darken.HARDWARE,
+                    arrowColor: EntryStatic.colorSet.arrow.default.HARDWARE,
+                },
+            ],
+            events: {},
+            def: {
+                params: [null],
+            },
+            paramsKeyMap: {
+                PORT: 0,
+            },
+            func(sprite, script) {
+                return script.getField('PORT');
+            },
+            syntax: {
+                js: [],
+                py: [
+                    {
+                        syntax: '%1',
+                        blockType: 'param',
+                        textParams: [
+                            {
+                                type: 'Dropdown',
+                                options: [
+                                    [Lang.Blocks.head, '19'],
+                                ],
+                                value: '19',
+                                fontSize: 11,
+                                converter: Entry.block.converters.returnStringKey,
+                                bgColor: EntryStatic.colorSet.block.darken.HARDWARE,
+                                arrowColor: EntryStatic.colorSet.arrow.default.HARDWARE,
+                            },
+                        ],
+                        keyOption: 'jerome_head_list',
                     },
                 ],
             },
@@ -1074,7 +1132,7 @@ Entry.jerome.getBlocks = function() {
                 PORT: 0,
                 VALUE: 1,
             },
-            class: 'jerome',
+            class: 'servo',
             //isNotFor: ['jerome'],
             func(sprite, script) {
                 const sq = Entry.hw.sendQueue;
@@ -1151,7 +1209,7 @@ Entry.jerome.getBlocks = function() {
                 PORT: 0,
                 VALUE: 1,
             },
-            class: 'jerome',
+            class: 'servo',
             //isNotFor: ['jerome'],
             func(sprite, script) {
                 const sq = Entry.hw.sendQueue;
@@ -1227,7 +1285,7 @@ Entry.jerome.getBlocks = function() {
                 PORT: 0,
                 VALUE: 1,
             },
-            class: 'jerome',
+            class: 'servo',
             //isNotFor: ['jerome'],
             func(sprite, script) {
                 const sq = Entry.hw.sendQueue;
@@ -1303,7 +1361,82 @@ Entry.jerome.getBlocks = function() {
                 PORT: 0,
                 VALUE: 1,
             },
-            class: 'jerome',
+            class: 'servo',
+            //isNotFor: ['jerome'],
+            func(sprite, script) {
+                const sq = Entry.hw.sendQueue;
+                const port = script.getNumberValue('PORT', script);
+                let value = script.getNumberValue('VALUE', script);
+
+                if (!sq.SET) {
+                    sq.SET = {};
+                }
+                sq.SET[port] = {
+                    type: Entry.jerome.sensorTypes.SERVO_PIN,
+                    data: value,
+                    time: new Date().getTime(),
+                };
+                return script.callReturn();
+            },
+            syntax: {
+                js: [],
+                py: [
+                    {
+                        syntax: 'Arduino.servomotorWrite(%1, %2)',
+                        textParams: [
+                            {
+                                type: 'Block',
+                                accept: 'string',
+                            },
+                            {
+                                type: 'Block',
+                                accept: 'string',
+                            },
+                        ],
+                    },
+                ],
+            },
+        },
+        jerome_head_servo: {
+            color: EntryStatic.colorSet.block.default.HARDWARE,
+            outerLine: EntryStatic.colorSet.block.darken.HARDWARE,
+            skeleton: 'basic',
+            statements: [],
+            params: [
+                {
+                    type: 'Block',
+                    accept: 'string',
+                    defaultType: 'number',
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                    defaultType: 'number',
+                },
+                {
+                    type: 'Indicator',
+                    img: 'block_icon/hardware_icon.svg',
+                    size: 12,
+                },
+            ],
+            events: {},
+            def: {
+                params: [
+                    {
+                        type: 'jerome_head_list',
+                    },
+                    {
+                        type: 'jerome_servo_angle_list',
+                    },
+                    null,
+                ],
+                type: 'jerome_head_servo',
+            },
+            paramsKeyMap: {
+                PORT: 0,
+                VALUE: 1,
+            },
+            class: 'servo',
             //isNotFor: ['jerome'],
             func(sprite, script) {
                 const sq = Entry.hw.sendQueue;
